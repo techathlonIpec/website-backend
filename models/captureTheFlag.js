@@ -7,7 +7,7 @@ let schema = Schema({
     },
     sizeOfTeam: {
         type: Number,
-        max: 4,
+        max: 3,
         min: 1,
         required: true
     },
@@ -30,13 +30,9 @@ let schema = Schema({
             branch: {
                 type: String,
                 required: true
-            },
-            githubID: {
-                type: String,
-                required: true
             }
         }],
-        max: 4,
+        max: 3,
         min: 1
     },
     emailID: {
@@ -49,6 +45,6 @@ let schema = Schema({
     }
 })
 
-let hackathon = model('hackathonParticipant', schema)
+let captureTheFlag = model('hackathonParticipant', schema)
 
-module.exports = hackathon
+module.exports = captureTheFlag

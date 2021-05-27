@@ -31,7 +31,7 @@ let schema = Schema({
                 type: String,
                 required: true
             },
-            githubID: {
+            callOfDutyID: {
                 type: String,
                 required: true
             }
@@ -49,6 +49,6 @@ let schema = Schema({
     }
 })
 
-let hackathon = model('hackathonParticipant', schema)
+let speciawar = model('speciawarParticipant', schema)
 
-module.exports = hackathon
+module.exports = speciawar
