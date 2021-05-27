@@ -8,8 +8,11 @@ const infomaze = require('../models/infomaze')
 const captureTheFlag = require('../models/captureTheFlag')
 const vividly = require('../models/vividly')
 
+// Importing Validation Functions
+const {validationHackathon} = require('../functions/validation')
 
-router.post('/registerHackathon', (req, res) => {
+
+router.post('/registerHackathon',validationHackathon, (req, res) => {
     let newRegisteredTeam = new hackathon(req.body)
     newRegisteredTeam.save().then((savedTeam) => {
         if (savedTeam) {
