@@ -45,6 +45,6 @@ let schema = Schema({
     }
 })
 
-let captureTheFlag = model('hackathonParticipant', schema)
+let captureTheFlag = model('capturetheflagParticipants', schema)
 
 module.exports = captureTheFlag

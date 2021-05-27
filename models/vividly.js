@@ -33,6 +33,6 @@ let schema = Schema({
     }
 })
 
-let vividly = model('infomazeParticipant', schema)
+let vividly = model('vividlyParticipant', schema)
 
 module.exports = vividly

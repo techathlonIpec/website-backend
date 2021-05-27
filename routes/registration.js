@@ -9,10 +9,9 @@ const captureTheFlag = require('../models/captureTheFlag')
 const vividly = require('../models/vividly')
 
 // Importing Validation Functions
-const {validationHackathon} = require('../functions/validation')
+const validators = require('../functions/validation')
 
-
-router.post('/registerHackathon',validationHackathon, (req, res) => {
+router.post('/registerHackathon', validators.validationHackathon, (req, res) => {
     let newRegisteredTeam = new hackathon(req.body)
     newRegisteredTeam.save().then((savedTeam) => {
         if (savedTeam) {
@@ -24,8 +23,8 @@ router.post('/registerHackathon',validationHackathon, (req, res) => {
     })
 })
 
-router.post('/registerSpeciaWar', (req, res) => {
-    let newRegisteredTeam = new speciawar(req.body)
+router.post('/registerSpeciaWar', validators.validationSpeciaWar, (req, res) => {
+    let newRegisteredTeam = new speciaWar(req.body)
     newRegisteredTeam.save().then((savedTeam) => {
         if (savedTeam) {
             res.json({ done: true, savedTeam })
@@ -36,7 +35,7 @@ router.post('/registerSpeciaWar', (req, res) => {
     })
 })
 
-router.post('/registerInfomaze', (req, res) => {
+router.post('/registerInfomaze', validators.validationInfomaze, (req, res) => {
     let newRegisteredTeam = new infomaze(req.body)
     newRegisteredTeam.save().then((savedTeam) => {
         if (savedTeam) {
@@ -48,7 +47,7 @@ router.post('/registerInfomaze', (req, res) => {
     })
 })
 
-router.post('/registerCaptureTheFlag', (req, res) => {
+router.post('/registerCaptureTheFlag', validators.validationCaptureTheFlag, (req, res) => {
     let newRegisteredTeam = new captureTheFlag(req.body)
     newRegisteredTeam.save().then((savedTeam) => {
         if (savedTeam) {
@@ -61,7 +60,7 @@ router.post('/registerCaptureTheFlag', (req, res) => {
 })
 
 
-router.post('/registerVividly', (req, res) => {
+router.post('/registerVividly', validators.validationVividly, (req, res) => {
     let newRegisteredTeam = new vividly(req.body)
     newRegisteredTeam.save().then((savedTeam) => {
         if (savedTeam) {
