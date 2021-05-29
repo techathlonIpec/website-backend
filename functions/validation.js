@@ -127,3 +127,4 @@ function validationSpeciaWar(req, res, next) {
     }
 }
 module.exports = { validationHackathon, validationInfomaze, validationCaptureTheFlag, validationVividly, validationSpeciaWar }
+

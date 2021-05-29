@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const chalk = require('chalk')
 
 // IMporting Models
 const hackathon = require('../models/hackathon')
@@ -10,6 +11,13 @@ const vividly = require('../models/vividly')
 
 // Importing Validation Functions
 const validators = require('../functions/validation')
+
+// Importing Node Mailer Transporter
+const transporter = require('../functions/nodemailer')
+
+// Importing Templates for mail
+const templateMailGen = require('../templates/registration')
+
 
 router.post('/registerHackathon', validators.validationHackathon, (req, res) => {
     let newRegisteredTeam = new hackathon(req.body)
@@ -24,7 +32,7 @@ router.post('/registerHackathon', validators.validationHackathon, (req, res) => 
 })
 
 router.post('/registerSpeciaWar', validators.validationSpeciaWar, (req, res) => {
-    let newRegisteredTeam = new speciaWar(req.body)
+    let newRegisteredTeam = new speciawar(req.body)
     newRegisteredTeam.save().then((savedTeam) => {
         if (savedTeam) {
             res.json({ done: true, savedTeam })
@@ -51,7 +59,16 @@ router.post('/registerCaptureTheFlag', validators.validationCaptureTheFlag, (req
     let newRegisteredTeam = new captureTheFlag(req.body)
     newRegisteredTeam.save().then((savedTeam) => {
         if (savedTeam) {
-            res.json({ done: true, savedTeam })
+            transporter.sendMail({
+                from: process.env.MAIL_USERNAME, // sender address
+                to: req.body.emailID, // list of receivers
+                subject: "Techathlon Registration-2021", // Subject line
+                html: templateMailGen('Capture The Flag'), // html body
+            })
+                .then((response) => {
+                    console.log(chalk.green(response.messageId));
+                    res.json({ done: true, savedTeam })
+                })
         }
         else {
             res.json({ done: false })
