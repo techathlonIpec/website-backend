@@ -16,7 +16,8 @@ function validationHackathon(req, res, next) {
                 })
             ).length(req.body.sizeOfTeam),
             emailID: joi.string().email().required(),
-            contactNumber: joi.string().min(10).max(10).required()
+            contactNumber: joi.string().min(10).max(10).required(),
+            transactionID: joi.string().required()
         }
     )
     const validation = participantsJoiSchema.validate(req.body)
@@ -38,7 +39,8 @@ function validationInfomaze(req, res, next) {
             year: joi.number().max(4).min(1).required(),
             branch: joi.string().required(),
             emailID: joi.string().email().required(),
-            contactNumber: joi.string().min(10).max(10).required()
+            contactNumber: joi.string().min(10).max(10).required(),
+            transactionID: joi.string().required()
         }
     )
     const validation = participantsJoiSchema.validate(req.body)
@@ -65,7 +67,8 @@ function validationCaptureTheFlag(req, res, next) {
                 })
             ).length(req.body.sizeOfTeam),
             emailID: joi.string().email().required(),
-            contactNumber: joi.string().min(10).max(10).required()
+            contactNumber: joi.string().min(10).max(10).required(),
+            transactionID: joi.string().required()
         }
     )
     const validation = participantsJoiSchema.validate(req.body)
@@ -87,7 +90,8 @@ function validationVividly(req, res, next) {
             year: joi.number().max(4).min(1).required(),
             branch: joi.string().required(),
             emailID: joi.string().email().required(),
-            contactNumber: joi.string().min(10).max(10).required()
+            contactNumber: joi.string().min(10).max(10).required(),
+            transactionID: joi.string().required()
         }
     )
     const validation = participantsJoiSchema.validate(req.body)
@@ -115,7 +119,8 @@ function validationSpeciaWar(req, res, next) {
                 })
             ).length(req.body.sizeOfTeam),
             emailID: joi.string().email().required(),
-            contactNumber: joi.string().min(10).max(10).required()
+            contactNumber: joi.string().min(10).max(10).required(),
+            transactionID: joi.string().required()
         }
     )
     const validation = participantsJoiSchema.validate(req.body)

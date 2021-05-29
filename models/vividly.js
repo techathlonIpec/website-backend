@@ -30,6 +30,10 @@ let schema = Schema({
     contactNumber: {
         type: String,
         required: true,
+    },
+    transactionId:{
+        type: String,
+        required: true
     }
 })
 
