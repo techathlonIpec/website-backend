@@ -1,4 +1,11 @@
-function templateMailGen(eventName) {
+/**
+ * @param  {String} eventName
+ * @param  {String} participantName
+ * @param  {Number} teamName
+ * @param  {String} teamSize
+ * @param  {String} contactNumber
+ */
+function templateMailGen(eventName,participantName,teamName,teamSize,contactNumber) {
     return `
     <!DOCTYPE html>
 <html lang="en">
@@ -31,17 +38,26 @@ function templateMailGen(eventName) {
         style="font-family: Tahoma, Geneva, sans-serif; font-weight: normal; color: #2A2A2A; font-weight: bold; text-align: center; margin-bottom: 65px;font-size: 20px; letter-spacing: 6px;font-weight: normal; border: 2px solid black; padding: 15px;">
         THANK YOU FOR REGISTRATION!</h1>
       <h3 style="font-family:Palatino Linotype, Book Antiqua, Palatino, serif;font-style:italic;font-weight:500">
-        Hello <span style="border-bottom: 1px solid red">(Participant One Name here)</span>,</h3>
+        Hello <span style="border-bottom: 1px solid red">${participantName}</span>,</h3>
       <p
-        style="font-family:Palatino Linotype, Book Antiqua, Palatino, serif;font-size: 15px; margin-left: auto; margin-right: auto; text-align: justify;color: #666;line-height:1.5;margin-bottom:75px">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel metus eu urna lobortis condimentum vel
-        aenim. Pellentesque malesuada sapien id pellentesque suscipit. Vestibulum ante ipsum primis in faucibus orci
-        luctus et ultrices posuere cubilia Curae; Aenean porta tincidunt malesuada. Curabitur ac consectetur tellus.
-        Etiam aliquet ante sed nibh lobortis maximus. In at egestas justo.
+        style="font-family:Palatino Linotype, Book Antiqua, Palatino, serif;font-size: 15px; margin-left: auto; margin-right: auto; text-align: justify;color: #666;line-height:1.5;">
+        We hope you're testing negative and staying positive in this difficult time.
+        We're glad to tell you that your registration for the event ${eventName} has been recieved by our team at Inderprastha Engineering College, and we're excited to see you participating in the event.
         <br>
-        <br>
+        The details of the event are as follows:
+        <ul  style="font-family:Palatino Linotype, Book Antiqua, Palatino, serif;font-size: 15px; margin-left: auto; margin-right: auto; text-align: justify;color: #666;line-height:1.5;">
+        <li>Name of Team: ${teamName}</li>
+        <li>Name of Event: ${eventName}</li>
+        ${teamSize?`<li>Size of Team: ${teamSize}</li>`:''}
+        <li>Contact Number: ${contactNumber}</li>
+        </ul>
+        <p style="font-family:Palatino Linotype, Book Antiqua, Palatino, serif;font-size: 15px; margin-left: auto; margin-right: auto; text-align: justify;color: #666;line-height:1.5;">
+        You will recieve another e-mail from our team within the next 24 hours, which will confirm your participation for the event. This e-mail doesn't guarantee your participation.
+        </p>
+        <p style="font-family:Palatino Linotype, Book Antiqua, Palatino, serif;font-size: 15px; margin-left: auto; margin-right: auto; text-align: justify;color: #666;line-height:1.5;">
         Thanks & Regards <br>
         Team IPEC
+        </p>
       </p>
       <table style="width:100%;">
         <th>

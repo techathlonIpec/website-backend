@@ -29,5 +29,5 @@ let registration = require('./routes/registration')
 app.use('/', registration)
 
 app.listen(process.env.PORT , () => {
-    console.log(chalk.greenBright("Server is listening at port 3000!"))
+    console.log(chalk.greenBright("Server is listening at port "+process.env.PORT))
 })
