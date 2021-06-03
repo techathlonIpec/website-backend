@@ -1,13 +1,15 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const chalk = require('chalk')
-var Ddos = require('ddos')
-var ddos = new Ddos({burst:10, limit: 10})
+const cors = require('cors')
+// var Ddos = require('ddos')
+// var ddos = new Ddos({burst:10, limit: 10})
 require('dotenv').config()
 
 const app = express()
 app.use(express.json())
-app.use(ddos.express);
+app.use(cors())
+// app.use(ddos.express);
 
 //Connecting Database-MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
