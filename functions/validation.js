@@ -14,7 +14,7 @@ function validationHackathon(req, res, next) {
                     branch: joi.string().required(),
                     githubID: joi.string().required()
                 })
-            ).length(req.body.sizeOfTeam),
+            ).length(4),
             emailID: joi.string().email().required(),
             contactNumber: joi.string().min(10).max(10).required(),
             transactionId: joi.string().required()
@@ -65,7 +65,7 @@ function validationCaptureTheFlag(req, res, next) {
                     year: joi.number().max(4).min(1).required(),
                     branch: joi.string().required()
                 })
-            ).length(req.body.sizeOfTeam),
+            ).length(3),
             emailID: joi.string().email().required(),
             contactNumber: joi.string().min(10).max(10).required(),
             transactionId: joi.string().required()
@@ -117,7 +117,7 @@ function validationSpeciaWar(req, res, next) {
                     branch: joi.string().required(),
                     callOfDutyID: joi.string().required()
                 })
-            ).length(req.body.sizeOfTeam),
+            ).length(4),
             emailID: joi.string().email().required(),
             contactNumber: joi.string().min(10).max(10).required(),
             transactionId: joi.string().required()
