@@ -33,7 +33,6 @@ function validationHackathon(req, res, next) {
 function validationInfomaze(req, res, next) {
     const participantsJoiSchema = joi.object(
         {
-            teamName: joi.string().required(),
             name: joi.string().required(),
             college: joi.string().required(),
             year: joi.number().max(4).min(1).required(),
@@ -84,7 +83,6 @@ function validationCaptureTheFlag(req, res, next) {
 function validationVividly(req, res, next) {
     const participantsJoiSchema = joi.object(
         {
-            teamName: joi.string().required(),
             name: joi.string().required(),
             college: joi.string().required(),
             year: joi.number().max(4).min(1).required(),

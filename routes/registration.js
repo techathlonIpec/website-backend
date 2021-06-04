@@ -22,32 +22,38 @@ router.post(
   "/registerHackathon",
   validators.validationHackathon,
   (req, res) => {
-    let newRegisteredTeam = new hackathon(req.body);
-    newRegisteredTeam.save().then((savedTeam) => {
-      if (savedTeam) {
-        let emailTemplate = templateMailGen(
-          "Hackathon",
-          savedTeam.participants[0].name,
-          savedTeam.teamName,
-          savedTeam.sizeOfTeam,
-          savedTeam.contactNumber
-        );
 
-        transporter
-          .sendMail({
-            from: process.env.MAIL_USERNAME,
-            to: req.body.emailID,
-            subject: "Techathlon Registration-2021",
-            html: emailTemplate,
-          })
-          .then((response) => {
-            console.log(chalk.green(response.messageId));
-            res.json({ done: true, savedTeam });
-          });
-      } else {
-        res.json({ done: false });
-      }
-    });
+    if (req.body.sizeOfTeam == req.body.participants.length) {
+      let newRegisteredTeam = new hackathon(req.body);
+      newRegisteredTeam.save().then((savedTeam) => {
+        if (savedTeam) {
+          let emailTemplate = templateMailGen(
+            "Hackathon",
+            savedTeam.participants[0].name,
+            savedTeam.teamName,
+            savedTeam.sizeOfTeam,
+            savedTeam.contactNumber
+          );
+
+          transporter
+            .sendMail({
+              from: process.env.MAIL_USERNAME,
+              to: req.body.emailID,
+              subject: "Techathlon Registration-2021",
+              html: emailTemplate,
+            })
+            .then((response) => {
+              console.log(chalk.green(response.messageId));
+              res.json({ done: true, savedTeam });
+            });
+        } else {
+          res.json({ done: false });
+        }
+      });
+    }
+    else {
+      res.json({ done: false, error: { details: [{ message: 'Size of team and Number of participants should be same.' }] } })
+    }
   }
 );
 
@@ -55,32 +61,37 @@ router.post(
   "/registerSpeciaWar",
   validators.validationSpeciaWar,
   (req, res) => {
-    let newRegisteredTeam = new speciawar(req.body);
-    newRegisteredTeam.save().then((savedTeam) => {
-      if (savedTeam) {
-        let emailTemplate = templateMailGen(
-          "SpeciaWar",
-          savedTeam.participants[0].name,
-          savedTeam.teamName,
-          savedTeam.sizeOfTeam,
-          savedTeam.contactNumber
-        );
+    if (req.body.sizeOfTeam == req.body.participants.length) {
+      let newRegisteredTeam = new speciawar(req.body);
+      newRegisteredTeam.save().then((savedTeam) => {
+        if (savedTeam) {
+          let emailTemplate = templateMailGen(
+            "SpeciaWar",
+            savedTeam.participants[0].name,
+            savedTeam.teamName,
+            savedTeam.sizeOfTeam,
+            savedTeam.contactNumber
+          );
 
-        transporter
-          .sendMail({
-            from: process.env.MAIL_USERNAME,
-            to: req.body.emailID,
-            subject: "Techathlon Registration-2021",
-            html: emailTemplate,
-          })
-          .then((response) => {
-            console.log(chalk.green(response.messageId));
-            res.json({ done: true, savedTeam });
-          });
-      } else {
-        res.json({ done: false });
-      }
-    });
+          transporter
+            .sendMail({
+              from: process.env.MAIL_USERNAME,
+              to: req.body.emailID,
+              subject: "Techathlon Registration-2021",
+              html: emailTemplate,
+            })
+            .then((response) => {
+              console.log(chalk.green(response.messageId));
+              res.json({ done: true, savedTeam });
+            });
+        } else {
+          res.json({ done: false });
+        }
+      });
+    }
+    else {
+      res.json({ done: false, error: { details: [{ message: 'Size of team and Number of participants should be same.' }] } })
+    }
   }
 );
 
@@ -117,32 +128,37 @@ router.post(
   "/registerCaptureTheFlag",
   validators.validationCaptureTheFlag,
   (req, res) => {
-    let newRegisteredTeam = new captureTheFlag(req.body);
-    newRegisteredTeam.save().then((savedTeam) => {
-      if (savedTeam) {
-        let emailTemplate = templateMailGen(
-          "Capture the Flag",
-          savedTeam.participants[0].name,
-          savedTeam.teamName,
-          savedTeam.sizeOfTeam,
-          savedTeam.contactNumber
-        );
+    if (req.body.sizeOfTeam == req.body.participants.length) {
+      let newRegisteredTeam = new captureTheFlag(req.body);
+      newRegisteredTeam.save().then((savedTeam) => {
+        if (savedTeam) {
+          let emailTemplate = templateMailGen(
+            "Capture the Flag",
+            savedTeam.participants[0].name,
+            savedTeam.teamName,
+            savedTeam.sizeOfTeam,
+            savedTeam.contactNumber
+          );
 
-        transporter
-          .sendMail({
-            from: process.env.MAIL_USERNAME,
-            to: req.body.emailID,
-            subject: "Techathlon Registration-2021",
-            html: emailTemplate,
-          })
-          .then((response) => {
-            console.log(chalk.green(response.messageId));
-            res.json({ done: true, savedTeam });
-          });
-      } else {
-        res.json({ done: false });
-      }
-    });
+          transporter
+            .sendMail({
+              from: process.env.MAIL_USERNAME,
+              to: req.body.emailID,
+              subject: "Techathlon Registration-2021",
+              html: emailTemplate,
+            })
+            .then((response) => {
+              console.log(chalk.green(response.messageId));
+              res.json({ done: true, savedTeam });
+            });
+        } else {
+          res.json({ done: false });
+        }
+      });
+    }
+    else {
+      res.json({ done: false, error: { details: [{ message: 'Size of team and Number of participants should be same.' }] } })
+    }
   }
 );
 

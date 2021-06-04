@@ -1,10 +1,6 @@
 const { Schema, model } = require('mongoose')
 
 let schema = Schema({
-    teamName: {
-        type: String,
-        required: true
-    },
     name: {
         type: String,
         required: true
