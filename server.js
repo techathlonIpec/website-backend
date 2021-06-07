@@ -6,6 +6,18 @@ var Ddos = require('ddos')
 var ddos = new Ddos({burst:10, limit: 10})
 require('dotenv').config()
 
+// Sentry Error Tracing Setup
+const Sentry = require("@sentry/node");
+
+Sentry.init({
+  dsn: "https://01b079979e8048edb8667461db0dd69b@o386985.ingest.sentry.io/5803735",
+
+  // Set tracesSampleRate to 1.0 to capture 100%
+  // of transactions for performance monitoring.
+  // We recommend adjusting this value in production
+  tracesSampleRate: 1.0,
+});
+
 
 const app = express()
 app.use(express.json())
