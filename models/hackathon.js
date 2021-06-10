@@ -47,7 +47,11 @@ let schema = Schema({
         type: String,
         required: true,
     },
-    transactionId:{
+    transactionId: {
+        type: String,
+        required: true
+    },
+    utrNumber: {
         type: String,
         required: true
     }
