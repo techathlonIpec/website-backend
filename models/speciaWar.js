@@ -30,10 +30,6 @@ let schema = Schema({
             branch: {
                 type: String,
                 required: true
-            },
-            callOfDutyID: {
-                type: String,
-                required: true
             }
         }],
         max: 4,

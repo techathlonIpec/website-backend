@@ -5,8 +5,8 @@
  * @param  {String} teamSize
  * @param  {String} contactNumber
  */
-function templateMailGen(eventName,participantName,teamName,teamSize,contactNumber) {
-    return `
+function templateMailGen(eventName, participantName, teamName, teamSize, contactNumber, portalPassword) {
+  return `
     <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +48,8 @@ function templateMailGen(eventName,participantName,teamName,teamSize,contactNumb
         <ul  style="font-family:Palatino Linotype, Book Antiqua, Palatino, serif;font-size: 15px; margin-left: auto; margin-right: auto; text-align: justify;color: #666;line-height:1.5;">
         <li>Name of Team: ${teamName}</li>
         <li>Name of Event: ${eventName}</li>
-        ${teamSize?`<li>Size of Team: ${teamSize}</li>`:''}
+        ${teamSize ? `<li>Size of Team: ${teamSize}</li>` : ''}
+        ${portalPassword ? `<li>Password for Portal: ${portalPassword}</li>` : ''}
         <li>Contact Number: ${contactNumber}</li>
         </ul>
         <p style="font-family:Palatino Linotype, Book Antiqua, Palatino, serif;font-size: 15px; margin-left: auto; margin-right: auto; text-align: justify;color: #666;line-height:1.5;">

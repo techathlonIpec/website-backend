@@ -117,7 +117,6 @@ function validationSpeciaWar(req, res, next) {
                     college: joi.string().required(),
                     year: joi.number().max(4).min(1).required(),
                     branch: joi.string().required(),
-                    callOfDutyID: joi.string().required()
                 })
             ).max(4).min(1),
             emailID: joi.string().email().required(),

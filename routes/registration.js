@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const chalk = require("chalk");
+const { nanoid } = require('nanoid')
 
 // IMporting Models
 const hackathon = require("../models/hackathon");
@@ -22,9 +23,10 @@ router.post(
   "/registerHackathon",
   validators.validationHackathon,
   (req, res) => {
-
+    let data = req.body
+    data.portalPassword = nanoid(10)
     if (req.body.sizeOfTeam == req.body.participants.length) {
-      let newRegisteredTeam = new hackathon(req.body);
+      let newRegisteredTeam = new hackathon(data);
       newRegisteredTeam.save().then((savedTeam) => {
         if (savedTeam) {
           let emailTemplate = templateMailGen(
@@ -32,7 +34,8 @@ router.post(
             savedTeam.participants[0].name,
             savedTeam.teamName,
             savedTeam.sizeOfTeam,
-            savedTeam.contactNumber
+            savedTeam.contactNumber,
+            savedTeam.portalPassword
           );
 
           transporter
@@ -128,8 +131,10 @@ router.post(
   "/registerCaptureTheFlag",
   validators.validationCaptureTheFlag,
   (req, res) => {
+    let data = req.body
+    data.portalPassword = nanoid(10)
     if (req.body.sizeOfTeam == req.body.participants.length) {
-      let newRegisteredTeam = new captureTheFlag(req.body);
+      let newRegisteredTeam = new captureTheFlag(data);
       newRegisteredTeam.save().then((savedTeam) => {
         if (savedTeam) {
           let emailTemplate = templateMailGen(
@@ -137,7 +142,8 @@ router.post(
             savedTeam.participants[0].name,
             savedTeam.teamName,
             savedTeam.sizeOfTeam,
-            savedTeam.contactNumber
+            savedTeam.contactNumber,
+            savedTeam.portalPassword
           );
 
           transporter

@@ -51,6 +51,10 @@ let schema = Schema({
         type: String,
         required: true
     },
+    portalPassword: {
+        type: String,
+        required: true
+    },
     utrNumber: {
         type: String,
         required: true
