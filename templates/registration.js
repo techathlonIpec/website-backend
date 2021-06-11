@@ -46,7 +46,7 @@ function templateMailGen(eventName, participantName, teamName, teamSize, contact
         <br>
         The details of the event are as follows:
         <ul  style="font-family:Palatino Linotype, Book Antiqua, Palatino, serif;font-size: 15px; margin-left: auto; margin-right: auto; text-align: justify;color: #666;line-height:1.5;">
-        <li>Name of Team: ${teamName}</li>
+        <${teamName ? `<li>Team Name: ${teamName}</li>` : ''}
         <li>Name of Event: ${eventName}</li>
         ${teamSize ? `<li>Size of Team: ${teamSize}</li>` : ''}
         ${portalPassword ? `<li>Password for Portal: ${portalPassword}</li>` : ''}
@@ -63,7 +63,7 @@ function templateMailGen(eventName, participantName, teamName, teamSize, contact
       <table style="width:100%;">
         <th>
         <td style="width:25%"></td>
-        <td style="background-color:black;with:50%;text-align:center;padding:15px"><a href="https://logico.com.ar/"
+        <td style="background-color:black;with:50%;text-align:center;padding:15px"><a href="https://www.instagram.com/ipectechathlon/"
             style="margin-left: auto; margin-right: auto;text-decoration:none;color: white;text-align:center;font-family:Courier New, Courier, monospace;font-weight:600;letter-spacing:2px;background-color:black;padding:15px">
             INSTAGRAM  
           </a></td>
@@ -75,7 +75,7 @@ function templateMailGen(eventName, participantName, teamName, teamSize, contact
           style="text-align:center;font-family:Courier New, Courier, monospace;font-size:15px;color#666;">
           <a href="https://ipec.org.in" style="color:#666">Inderprastha Engineering College</a> <br> Follow us with <span
             style="color:red">&hearts;</span> 
-          on <a href="http://instagram.com/techathlonipec">
+          on <a href="https://www.instagram.com/ipectechathlon/">
             Instagram</a> </small></p>
       <p>&nbsp;</p>
     </div>
