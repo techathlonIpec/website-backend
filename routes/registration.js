@@ -196,4 +196,27 @@ router.post("/registerVividly", validators.validationVividly, (req, res) => {
     }
   });
 });
+
+router.get('/registrationDetails', async (req, res) => {
+  try {
+    let hackathonData = await (await hackathon.find()).length
+    let infomazeData = await (await infomaze.find()).length
+    let captureTheFlagData = await (await captureTheFlag.find()).length
+    let speciawarData = await (await speciawar.find()).length
+    let vividlyData = await (await vividly.find()).length
+    let outputString = `
+    Hackathon : ${hackathonData} \n
+    Infomaze : ${infomazeData} \n
+    Capture The Flag : ${captureTheFlagData}\n
+    Speciawar : ${speciawarData}\n
+    Vividly : ${vividlyData}\n
+    Total Registrations: ${hackathonData + infomazeData + captureTheFlagData + speciawarData + vividlyData}
+    `
+    res.write(outputString)
+    res.end()
+  }
+  catch (e) {
+    res.send("Some error in fetching Data. Contact Team.")
+  }
+})
 module.exports = router;
